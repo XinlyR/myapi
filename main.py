@@ -1,6 +1,7 @@
 from flask import Flask, send_file
 import pandas as pd
 import io
+import os
 
 app = Flask(__name__)
 
@@ -86,4 +87,5 @@ def download_kf_places_paris():
     return send_file(output, mimetype='text/csv', as_attachment=True, download_name="kf_places_paris.csv")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Use the port Render specifies
+    app.run(host="0.0.0.0", port=port) 
