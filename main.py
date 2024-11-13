@@ -5,6 +5,10 @@ import os
 
 app = Flask(__name__)
 
+@app.route("/")  # This route will be accessed at "https://your-api-service-url.com/"
+def home():
+    return "Welcome to the Kids-Friendly Data API!"
+
 # Téléchargement de df_detailed_places
 @app.route("/api/download_detailed_places", methods=["GET"])
 def download_detailed_places():
